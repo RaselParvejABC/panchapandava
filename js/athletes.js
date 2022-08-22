@@ -20,7 +20,7 @@ const athleteActions = {
   noChance: "no-chance",
 };
 
-// Populating Athletes Arena
+// Populating Athletes Arena before Document Queries
 function populateAthletesArena() {
   const athleteArenaElement = document.querySelector("section#athletes-arena");
   athleteArenaElement.innerHTML = "";
@@ -52,7 +52,7 @@ function populateAthletesArena() {
 
 populateAthletesArena();
 
-// Used-more-than-once Document Queries
+// Repeated Document Queries
 const selectedAthletesListElement = document.querySelector(
   "#selected-athletes-arena > ol"
 );
