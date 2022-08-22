@@ -1,3 +1,5 @@
+// States
+
 const allAthletesList = [
   { name: "Lionel Messi", image: "/img/1.png" },
   { name: "Neymar Jr", image: "/img/2.png" },
@@ -18,10 +20,7 @@ const athleteActions = {
   noChance: "no-chance",
 };
 
-const selectionChangedEvent = new Event("selection-changed-event");
-const vacancyCreatedEvent = new Event("vacancy-created-event");
-const noVacancyEvent = new Event("no-vacancy-event");
-
+// Populating Athletes Arena
 function populateAthletesArena() {
   const athleteArenaElement = document.querySelector("section#athletes-arena");
   athleteArenaElement.innerHTML = "";
@@ -53,46 +52,66 @@ function populateAthletesArena() {
 
 populateAthletesArena();
 
-function populateSelectedAthletesArena() {}
+// Used-more-than-once Document Queries
+const selectedAthletesListElement = document.querySelector(
+  "#selected-athletes-arena > ol"
+);
+
+const arrayOfAthleteSelectionButtons = Array.from(
+  document.querySelectorAll("button.athlete-selection-button")
+);
+
+// Custom Events
+
+const selectionChangedEvent = new Event("selection-changed-event");
+const vacancyCreatedEvent = new Event("vacancy-created-event");
+const noVacancyEvent = new Event("no-vacancy-event");
+
+//Dispatching Custom Events
+function dispatchAnEventOnElement(element, event) {
+  element.dispatchEvent(event);
+}
+function dispatchAnEventOnEachElementOfArray(array, event) {
+  array.forEach(function (element) {
+    dispatchAnEventOnElement(element, event);
+  });
+}
+
+// Selecting an Athlete
 
 function selectAthlete(athleteIndex) {
   selectedAthletesIndices.unshift(athleteIndex);
-  document
-    .querySelector("#selected-athletes-arena > ol")
-    .dispatchEvent(selectionChangedEvent);
-  console.log("Dispatched");
+  dispatchAnEventOnElement(selectedAthletesListElement, selectionChangedEvent);
   if (selectedAthletesIndices.length === 5) {
-    Array.from(
-      document.querySelectorAll("button.athlete-selection-button")
-    ).forEach((selectionButton) => {
-      selectionButton.dispatchEvent(noVacancyEvent);
-    });
+    dispatchAnEventOnEachElementOfArray(
+      arrayOfAthleteSelectionButtons,
+      noVacancyEvent
+    );
   }
 }
+
+// Deselecting an Athlete
 
 function deselectAthlete(athleteIndex) {
   selectedAthletesIndices.splice(
     selectedAthletesIndices.indexOf(athleteIndex),
     1
   );
-  console.log(selectedAthletesIndices);
-  document
-    .querySelector("#selected-athletes-arena > ol")
-    .dispatchEvent(selectionChangedEvent);
+  dispatchAnEventOnElement(selectedAthletesListElement, selectionChangedEvent);
 
   if (selectedAthletesIndices.length === 4) {
-    Array.from(
-      document.querySelectorAll("button.athlete-selection-button")
-    ).forEach((selectionButton) => {
-      selectionButton.dispatchEvent(vacancyCreatedEvent);
-    });
+    dispatchAnEventOnEachElementOfArray(
+      arrayOfAthleteSelectionButtons,
+      vacancyCreatedEvent
+    );
   }
 }
 
-Array.from(
-  document.querySelectorAll("button.athlete-selection-button")
-).forEach((selectionButton) => {
+// Athlete Selection Button Behavior
+
+arrayOfAthleteSelectionButtons.forEach((selectionButton) => {
   selectionButton.addEventListener("click", function () {
+    console.log("Hello");
     const athleteIndex = this.closest(".athlete-card").dataset.athleteIndex;
     const athleteAction = this.closest(".athlete-card").dataset.athleteAction;
     if (athleteAction === athleteActions.select) {
@@ -144,9 +163,10 @@ Array.from(
   });
 });
 
-document
-  .querySelector("#selected-athletes-arena > ol")
-  .addEventListener("selection-changed-event", function () {
+// Selected Athletes List Behavior
+selectedAthletesListElement.addEventListener(
+  "selection-changed-event",
+  function () {
     if (selectedAthletesIndices.length === 0) {
       this.innerHTML = "Your Selections will appear here.";
       return;
@@ -156,4 +176,5 @@ document
         return `<li>${allAthletesList[athleteIndex].name}</li>`;
       })
       .join("\n");
-  });
+  }
+);
