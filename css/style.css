@@ -1,0 +1,15 @@
+/* Poppins Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header */
+header {
+  background-image: url(../img/olympic-logo.png), url(../img/olympic-torch.png);
+  background-position: left bottom, right bottom;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 15%, 15%;
+}

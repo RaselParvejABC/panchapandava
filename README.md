@@ -1,5 +1,1 @@
-# Select Best Five Landing Page
-Please create yoru private repo 
-## [https://classroom.github.com/a/_LNX3tEE](https://classroom.github.com/a/_LNX3tEE)
-
-### Private Repo Link: [https://classroom.github.com/a/_LNX3tEE](https://classroom.github.com/a/_LNX3tEE)
+This project was assigned to me as the Final Project of Milestone-5 at Complete Web Development Course by Programming Hero.
