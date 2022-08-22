@@ -147,6 +147,10 @@ Array.from(
 document
   .querySelector("#selected-athletes-arena > ol")
   .addEventListener("selection-changed-event", function () {
+    if (selectedAthletesIndices.length === 0) {
+      this.innerHTML = "Your Selections will appear here.";
+      return;
+    }
     this.innerHTML = selectedAthletesIndices
       .map(function (athleteIndex) {
         return `<li>${allAthletesList[athleteIndex].name}</li>`;
