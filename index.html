@@ -22,32 +22,77 @@
 
     <!-- Bootstrap JS -->
     <script
+      defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
 
     <!-- Custom Javascript -->
+    <script defer src="js/athletes.js"></script>
   </head>
   <body>
-    <header
-      class="container-fluid bg-dark text-white p-5 text-center row justify-content-center"
-    >
-      <div class="col-8 my-5">
-        <h1>
-          Planet Earth's
-          <span class="text-primary fw-bold fs-1">Panchapandava</span> <br />
-          <small>for</small> <span class="fw-bold">Mars Olympic</span>
-        </h1>
-        <p class="lead mt-5">
-          Hello Earthlings, help us decide which 5 Athletes— to represent Planet
-          Earth, Our Green Heaven— we must send to
-          <span class="fw-bold text-info">Mars Olympic</span> going to be held
-          on next Month. <br />Also,
-          <span class="fw-bold text-primary">Donate</span> to help us Finance
-          this mission.
-        </p>
+    <!-- Header Section  -->
+    <header class="container-fluid bg-dark text-white p-5 text-center">
+      <div class="row justify-content-center">
+        <div class="col-8 my-5">
+          <h1>
+            Planet Earth's
+            <span class="text-primary fw-bold fs-1">Panchapandava</span> <br />
+            <small>for</small> <span class="fw-bold">Mars Olympic</span>
+          </h1>
+          <p class="lead mt-5">
+            Hello Earthlings, help us decide which 5 Athletes— to represent
+            Planet Earth, Our Green Heaven— we must send to
+            <span class="fw-bold text-info">Mars Olympic</span> going to be held
+            on next Month. <br />Also,
+            <span class="fw-bold text-primary">Donate</span> to help us Finance
+            this mission.
+          </p>
+        </div>
       </div>
     </header>
+
+    <!-- Main Section -->
+    <main class="bg-black text-white py-5 text-center">
+      <div class="container">
+        <div class="row">
+          <section id="athletes-arena" class="col-9 row row-cols-3 g-5">
+            <!-- Loading Spinner  -->
+            <div class="col-12">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <!-- <div>
+              <div
+                class="p-0 pb-4 bg-black-50 border rounded-top athlete-card"
+                data-athlete-index="0"
+              >
+                <img
+                  src="/img/1.png"
+                  class="img-fluid w-100 rounded-top"
+                  alt=""
+                />
+                <p class="pt-3 lead">Lionel Messi</p>
+                <button type="button" class="btn btn-primary">
+                  Click to Select
+                </button>
+              </div>
+            </div> -->
+          </section>
+          <section id="calculation-arena" class="col-3 row row-cols-1">
+            <div id="selected-athletes-arena"></div>
+            <div id="calculator"></div>
+          </section>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
