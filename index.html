@@ -55,8 +55,8 @@
 
     <!-- Main Section -->
     <main class="bg-black text-white py-5 text-center">
-      <div class="container">
-        <div class="row">
+      <div class="container mb-5">
+        <div id="selection-arena" class="row g-5">
           <section id="athletes-arena" class="col-9 row row-cols-3 g-5">
             <!-- Loading Spinner  -->
             <div class="col-12">
@@ -70,7 +70,8 @@
                 <span class="visually-hidden">Loading...</span>
               </div>
             </div>
-            <!-- <div>
+            <!-- Sample Athlete Card 
+            <div>
               <div
                 class="p-0 pb-4 bg-black-50 border rounded-top athlete-card"
                 data-athlete-index="0"
@@ -87,12 +88,41 @@
               </div>
             </div> -->
           </section>
-          <section id="calculation-arena" class="col-3 row row-cols-1">
-            <div id="selected-athletes-arena"></div>
+          <section id="calculation-arena" class="col-3 row row-cols-1 g-5">
+            <div id="selected-athletes-arena" class="border pt-3">
+              <h5>
+                Yours<br />
+                <span class="text-primary fw-bold">Panchapandava</span>s
+              </h5>
+              <ol class="text-start"></ol>
+            </div>
             <div id="calculator"></div>
           </section>
         </div>
       </div>
     </main>
+
+    <!-- Modals -->
+
+    <div id="no-vacancy-modal" class="modal position-fixed" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold text-warning">
+              Five Athletes Already Selected
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Deselect An Already Selected Athlete, then try again.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
