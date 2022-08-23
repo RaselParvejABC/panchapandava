@@ -61,6 +61,8 @@ const arrayOfAthleteSelectionButtons = Array.from(
   document.querySelectorAll("button.athlete-selection-button")
 );
 
+const donationCalculator = document.querySelector("#donation-calculator");
+
 // Custom Events
 
 const selectionChangedEvent = new Event("selection-changed-event");
@@ -68,12 +70,9 @@ const vacancyCreatedEvent = new Event("vacancy-created-event");
 const noVacancyEvent = new Event("no-vacancy-event");
 
 //Dispatching Custom Events
-function dispatchAnEventOnElement(element, event) {
-  element.dispatchEvent(event);
-}
 function dispatchAnEventOnEachElementOfArray(array, event) {
   array.forEach(function (element) {
-    dispatchAnEventOnElement(element, event);
+    element.dispatchEvent(event);
   });
 }
 
@@ -81,7 +80,10 @@ function dispatchAnEventOnEachElementOfArray(array, event) {
 
 function selectAthlete(athleteIndex) {
   selectedAthletesIndices.unshift(athleteIndex);
-  dispatchAnEventOnElement(selectedAthletesListElement, selectionChangedEvent);
+  dispatchAnEventOnEachElementOfArray(
+    [selectedAthletesListElement, donationCalculator],
+    selectionChangedEvent
+  );
   if (selectedAthletesIndices.length === 5) {
     dispatchAnEventOnEachElementOfArray(
       arrayOfAthleteSelectionButtons,
@@ -97,7 +99,10 @@ function deselectAthlete(athleteIndex) {
     selectedAthletesIndices.indexOf(athleteIndex),
     1
   );
-  dispatchAnEventOnElement(selectedAthletesListElement, selectionChangedEvent);
+  dispatchAnEventOnEachElementOfArray(
+    [selectedAthletesListElement, donationCalculator],
+    selectionChangedEvent
+  );
 
   if (selectedAthletesIndices.length === 4) {
     dispatchAnEventOnEachElementOfArray(
@@ -111,7 +116,6 @@ function deselectAthlete(athleteIndex) {
 
 arrayOfAthleteSelectionButtons.forEach((selectionButton) => {
   selectionButton.addEventListener("click", function () {
-    console.log("Hello");
     const athleteIndex = this.closest(".athlete-card").dataset.athleteIndex;
     const athleteAction = this.closest(".athlete-card").dataset.athleteAction;
     if (athleteAction === athleteActions.select) {
