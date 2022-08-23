@@ -36,19 +36,22 @@ donationCalculator.addEventListener("selection-changed-event", function () {
 ].forEach((inputField) => {
   inputField.addEventListener("input", function (event) {
     const newCharacter = event.data;
+    const isDigit = newCharacter >= "0" && newCharacter <= "9";
     const isInsertEvent = event.inputType.startsWith("insert");
-    if (isInsertEvent && (newCharacter < "0" || newCharacter > "9")) {
+    if (isInsertEvent && !isDigit) {
       new bootstrap.Modal("#wrong-input-modal").show();
       this.value = Number(this.value.slice(0, -1));
       return;
     }
-    if (isInsertEvent) {
+    if (isInsertEvent && isDigit) {
       this.value = Number(this.value);
     }
   });
 
   inputField.addEventListener("blur", function () {
-    this.value = Number(this.value);
+    if (this.value === "") {
+      this.value = 0;
+    }
     //Ensures there is always a number in the input field before calculation
   });
 });
