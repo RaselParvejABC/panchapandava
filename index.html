@@ -89,7 +89,7 @@
               </div>
             </div> -->
           </section>
-          <section id="calculation-arena" class="col-3 mt-5">
+          <section class="col-3 mt-5">
             <div
               id="selected-athletes-arena"
               class="border mt-5 pt-3"
@@ -112,8 +112,13 @@
                 type="text"
                 id="donation-for-per-player"
                 class="px-2 mb-3"
+                value="0"
               />
-              <button class="btn btn-primary mb-3" type="button">
+              <button
+                id="calculate-total-for-athletes"
+                class="btn btn-primary mb-3"
+                type="button"
+              >
                 Calculate Total for Athletes
               </button>
               <div class="text-info text-center fw-bold mb-3">
@@ -123,17 +128,31 @@
               <label for="donation-for-manager" class="mb-3"
                 >Donation for Manager</label
               >
-              <input type="text" id="donation-for-manager" class="px-2 mb-3" />
+              <input
+                type="text"
+                id="donation-for-manager"
+                class="px-2 mb-3"
+                value="0"
+              />
               <label for="donation-for-coach" class="mb-3"
                 >Donation for Coach</label
               >
-              <input type="text" id="donation-for-coach" class="px-2 mb-3" />
-              <button class="btn btn-primary mb-3" type="button">
+              <input
+                type="text"
+                id="donation-for-coach"
+                class="px-2 mb-3"
+                value="0"
+              />
+              <button
+                id="calculate-total-donation"
+                class="btn btn-primary mb-3"
+                type="button"
+              >
                 Calculate Total Donation
               </button>
               <div class="text-info text-center fw-bold mb-3">
                 Total Donation:<br />
-                $<span id="total-donation-for-players">0</span>
+                $<span id="total-donation">0</span>
               </div>
             </div>
           </section>
@@ -159,6 +178,28 @@
           </div>
           <div class="modal-body">
             <p>Deselect An Already Selected Athlete, then Try Again.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="wrong-input-modal" class="modal position-fixed" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold text-warning">Type only Integer</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Only Allowed Characters are Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8 and
+              9.
+            </p>
           </div>
         </div>
       </div>
